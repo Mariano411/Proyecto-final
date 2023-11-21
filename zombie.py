@@ -156,16 +156,30 @@ while True:
         rescaledBackground = pygame.transform.scale(backgroundImage, (WINDOWWIDTH, WINDOWHEIGHT))
         windowSurface.blit(rescaledBackground, (0, 0))
         windowSurface.blit(playerImage, (WINDOWWIDTH / 2, WINDOWHEIGHT - 70))
+
     elif selected_scenario == 2:
         backgroundImage = pygame.image.load('F.jpg')
         rescaledBackground = pygame.transform.scale(backgroundImage, (WINDOWWIDTH, WINDOWHEIGHT))
         windowSurface.blit(rescaledBackground, (0, 0))
         windowSurface.blit(playerImage, (WINDOWWIDTH / 2, WINDOWHEIGHT - 70))
+        playerImage = pygame.image.load('SnowPea.gif')
+        playerRect = playerImage.get_rect()
+        bulletImage = pygame.image.load('SB.png')
+        bulletRect = bulletImage.get_rect()
+        playerRect.topleft = (325, WINDOWHEIGHT /2)
+
+
     elif selected_scenario == 3:
         backgroundImage = pygame.image.load('R.jpeg')
         rescaledBackground = pygame.transform.scale(backgroundImage, (WINDOWWIDTH, WINDOWHEIGHT))
         windowSurface.blit(rescaledBackground, (0, 0))
         windowSurface.blit(playerImage, (WINDOWWIDTH / 2, WINDOWHEIGHT - 70))
+        BULLETSPEED+=0.5
+        playerImage = pygame.image.load('MZCanon.png')
+        playerRect = playerImage.get_rect()
+        bulletImage = pygame.image.load('CB.png')
+        bulletRect = bulletImage.get_rect()
+        playerRect.topleft = (325, WINDOWHEIGHT /2)
     
     
     while True: # the game loop runs while the game part is playing
@@ -197,34 +211,23 @@ while True:
                     shoot = False
                     
         #Score
-        if puntos == 10:
-            BULLETSPEED+=0.2
-            playerImage = pygame.image.load('FirePea.png')
-            playerRect = playerImage.get_rect()
-            bulletImage = pygame.image.load('FB.png')
-            bulletRect = bulletImage.get_rect()
-            playerRect.topleft = (325, WINDOWHEIGHT /2)
-        if puntos == 20:
-            BULLETSPEED+=0.2
-            playerImage = pygame.image.load('SnowPea.png')
-            playerRect = playerImage.get_rect()
-            bulletImage = pygame.image.load('SB.png')
-            bulletRect = bulletImage.get_rect()
-            playerRect.topleft = (325, WINDOWHEIGHT /2)
-        if puntos == 30:
-            BULLETSPEED+=0.2
-            playerImage = pygame.image.load('MZCanon.png')
-            playerRect = playerImage.get_rect()
-            bulletImage = pygame.image.load('CB.png')
-            bulletRect = bulletImage.get_rect()
-            playerRect.topleft = (325, WINDOWHEIGHT /2)
-        if puntos == 40:
-            BULLETSPEED+=0.2
+        if puntos == 150 and selected_scenario == 1 :
+            BULLETSPEED+=1
             playerImage = pygame.image.load('Plgoch.png')
             playerRect = playerImage.get_rect()
             bulletImage = pygame.image.load('5.png')
             bulletRect = bulletImage.get_rect()
             playerRect.topleft = (325, WINDOWHEIGHT /2)
+
+        if puntos == 70 and selected_scenario == 2:
+            BULLETSPEED+=0.5
+            playerImage = pygame.image.load('FirePea.png')
+            playerRect = playerImage.get_rect()
+            bulletImage = pygame.image.load('FB.png')
+            bulletRect = bulletImage.get_rect()
+            playerRect.topleft = (325, WINDOWHEIGHT /2)
+            
+
             
         # Add new zombies at the top of the screen, if needed.
         zombieAddCounter += 1
